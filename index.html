@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Data & Proyectos - [Tu Nombre]</title>
+    <!-- Carga de Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de color de Tailwind (para usar 'Inter' y colores custom) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1e1e1e', // Fondo principal oscuro
+                        'sidebar-dark': '#1c1c1c', // Barra lateral más oscura
+                        'content-dark': '#3a3a3a', // Fondo de contenido
+                        'text-light': '#e0e0e0', // Texto claro
+                        'accent-1': '#78c257', // Color de acento para categorías
+                        'accent-2': '#e0985c',
+                        'accent-3': '#f7be5e',
+                        'accent-4': '#5d85c8',
+                        'accent-5': '#c45c99',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo para simular el desplazamiento de la barra lateral izquierda */
+        .sidebar {
+            width: 200px;
+            /* Fijo para simular la imagen */
+        }
+        /* Estilo para los iconos de la barra lateral (usaremos SVGs simples o texto) */
+        .nav-link-icon {
+            width: 20px;
+            height: 20px;
+        }
+        /* La barra de desplazamiento de progreso */
+        .progress-bar {
+            height: 4px;
+            background-color: #555;
+            width: 100%;
+            border-radius: 9999px;
+            margin-top: 8px;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 60%; /* Ejemplo de progreso */
+            background-color: #78c257;
+            border-radius: 9999px;
+        }
+        /* Sombra interior para las tarjetas de categorías */
+        .card-inset-shadow {
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-primary-dark font-sans text-text-light min-h-screen transition-colors duration-300" x-data="{ darkMode: true }">
+
+    <div class="flex">
+        <!-- BARRA LATERAL (Izquierda) -->
+        <aside class="sidebar bg-sidebar-dark fixed h-screen p-6 flex flex-col justify-between shadow-xl">
+            <div>
+                <!-- Sección de Perfil -->
+                <div class="mb-8 flex flex-col items-start">
+                    <!-- Avatar (Placeholder) -->
+                    <div class="w-16 h-16 bg-gray-600 rounded-full mb-3 border-4 border-gray-700 overflow-hidden">
+                         <!-- Puedes reemplazar esto con una imagen real si tienes el URL: -->
+                         <img src="https://placehold.co/100x100/4a4a4a/ffffff?text=Yo" alt="Tu Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-lg font-bold text-white">[Tu Nombre]</h1>
+                    <p class="text-xs text-gray-400 mt-1">Ing. Civil & Data Analyst</p>
+                    <p class="text-xs text-gray-500 mt-1 leading-tight">
+                        Análisis de Datos, Python, SQL, Optimización de Costos y Proyectos.
+                    </p>
+                </div>
+
+                <!-- Iconos de Redes Sociales (Mock) -->
+                <div class="flex space-x-3 mb-6">
+                    <a href="#" class="text-gray-500 hover:text-accent-1 transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-4 15h-2v-4h-2V6h4v9zm-1-11a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent-1 transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM9 20H4V9h5v11zm-2.5-12h-1v-1.5h1V8zm9.5 12h-5v-11h5v11zm2.5-10.5a3.5 3.5 0 00-3.5-3.5 3.5 3.5 0 00-3.5 3.5h7z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent-1 transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 5.23 3.84 9.54 8.83 10.38l-.73-2.39C5.45 18.28 2.68 15.42 2.68 12c0-4.6 3.72-8.32 8.32-8.32 4.6 0 8.32 3.72 8.32 8.32 0 3.12-1.74 5.86-4.32 7.28l-.51 1.76c3.92-1.3 6.94-5.07 6.94-9.04C22 6.48 17.52 2 12 2zm2.5 13.5l-3.5-2V7h1v4.5l3.5 2 1 1.5z"/></svg>
+                    </a>
+                </div>
+
+                <!-- Enlaces de Navegación -->
+                <nav class="space-y-2 text-sm">
+                    <a href="#" class="flex items-center space-x-3 text-white">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-2 16h-2v-2h2v2zm0-4h-2V9h2v5z"/></svg>
+                        <span>Archivos</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0017 10.5 6.5 6.5 0 1010.5 17c1.4 0 2.7-.47 3.73-1.28l.27.28v.79l5 4.99L20.49 19l-4.99-5zM10.5 16A5.5 5.5 0 1116 10.5 5.506 5.506 0 0110.5 16z"/></svg>
+                        <span>Search</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        <span>More from [Tu Nombre]</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 18H7v-7h2v7zm4 0h-2V6h2v12zm4 0h-2v-3h2v3z"/></svg>
+                        <span>#Podcast</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <span>Resumé</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition">
+                        <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                        <span>Talks</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Toggle Modo Oscuro -->
+            <div class="pt-6 border-t border-gray-700">
+                <button @click="darkMode = !darkMode" class="flex items-center space-x-3 text-gray-500 hover:text-text-light transition text-sm">
+                    <svg class="nav-link-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path x-show="darkMode" d="M12 3a9 9 0 009 9c0 4.97-4.03 9-9 9s-9-4.03-9-9c0-2.61 1.12-4.97 2.91-6.61A9.002 9.002 0 0012 3z"/>
+                        <path x-show="!darkMode" d="M12 3a9 9 0 019 9c0 4.97-4.03 9-9 9s-9-4.03-9-9c0-2.61 1.12-4.97 2.91-6.61A9.002 9.002 0 0112 3z"/>
+                    </svg>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="ml-sidebar flex-grow p-8 sm:p-12 md:p-16">
+            
+            <!-- SECCIÓN DE CATEGORÍAS (Grid de 5 tarjetas) -->
+            <div class="mb-12">
+                <h2 class="text-xs text-gray-500 mb-4 tracking-widest uppercase">CATEGORIES</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                    
+                    <!-- Tarjeta 1: Data Learned (Verde) -->
+                    <div class="h-40 sm:h-48 bg-accent-1 rounded-xl p-4 sm:p-5 card-inset-shadow cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <p class="text-sm font-semibold text-white">Today I Learned</p>
+                        <!-- Simular Ilustración (Placeholder) -->
+                        <div class="mt-4 w-1/2 h-1/2 bg-white/20 rounded-lg"></div>
+                    </div>
+
+                    <!-- Tarjeta 2: Personal Updates (Naranja suave) -->
+                    <div class="h-40 sm:h-48 bg-accent-2 rounded-xl p-4 sm:p-5 card-inset-shadow cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <p class="text-sm font-semibold text-white">Personal Updates</p>
+                        <!-- Simular Ilustración (Placeholder) -->
+                        <div class="mt-4 w-1/2 h-1/2 bg-white/20 rounded-lg"></div>
+                    </div>
+
+                    <!-- Tarjeta 3: Artículos (Amarillo) -->
+                    <div class="h-40 sm:h-48 bg-accent-3 rounded-xl p-4 sm:p-5 card-inset-shadow cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <p class="text-sm font-semibold text-white">Artículos</p>
+                         <!-- Simular Ilustración (Placeholder) -->
+                        <div class="mt-4 w-1/2 h-1/2 bg-white/20 rounded-lg"></div>
+                    </div>
+
+                    <!-- Tarjeta 4: Proyectos (Azul) -->
+                    <div class="h-40 sm:h-48 bg-accent-4 rounded-xl p-4 sm:p-5 card-inset-shadow cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <p class="text-sm font-semibold text-white">Proyectos Data</p>
+                        <!-- Simular Ilustración (Placeholder) -->
+                        <div class="mt-4 w-1/2 h-1/2 bg-white/20 rounded-lg"></div>
+                    </div>
+
+                    <!-- Tarjeta 5: Ingeniería (Morado) -->
+                    <div class="h-40 sm:h-48 bg-accent-5 rounded-xl p-4 sm:p-5 card-inset-shadow cursor-pointer hover:scale-[1.02] transition-transform duration-300">
+                        <p class="text-sm font-semibold text-white">Ingeniería & Costos</p>
+                        <!-- Simular Ilustración (Placeholder) -->
+                        <div class="mt-4 w-1/2 h-1/2 bg-white/20 rounded-lg"></div>
+                    </div>
+                </div>
+                
+                <!-- Barra de Progreso Simulada -->
+                <div class="progress-bar w-full max-w-lg mx-auto mt-8 hidden sm:block">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN DE ENTRADAS (Lista cronológica) -->
+            <div>
+                <h3 class="text-sm text-gray-500 mb-6 tracking-widest uppercase">2025</h3>
+
+                <!-- Contenedor para el listado de entradas -->
+                <div class="space-y-2">
+
+                    <!-- Artículo 1: Análisis de Riesgo -->
+                    <a href="#" class="block p-4 sm:p-5 bg-content-dark rounded-xl hover:bg-gray-700/50 transition-colors duration-300 flex items-center justify-between">
+                        <div>
+                            <p class="text-base sm:text-lg font-semibold text-text-light">Modelo de Predicción de Sobrecostos con Python (ML)</p>
+                            <p class="text-xs text-gray-500 mt-1">Nov 10, 2025</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-1 rounded-lg flex-shrink-0 ml-4">
+                             <!-- Placeholder de Icono -->
+                        </div>
+                    </a>
+
+                    <!-- Artículo 2: Consulta SQL Avanzada -->
+                    <a href="#" class="block p-4 sm:p-5 bg-content-dark rounded-xl hover:bg-gray-700/50 transition-colors duration-300 flex items-center justify-between">
+                        <div>
+                            <p class="text-base sm:text-lg font-semibold text-text-light">Optimización de Consultas SQL para la Curva S</p>
+                            <p class="text-xs text-gray-500 mt-1">Jul 30, 2025</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-2 rounded-lg flex-shrink-0 ml-4">
+                             <!-- Placeholder de Icono -->
+                        </div>
+                    </a>
+
+                    <!-- Artículo 3: Integración de Sistemas -->
+                    <a href="#" class="block p-4 sm:p-5 bg-content-dark rounded-xl hover:bg-gray-700/50 transition-colors duration-300 flex items-center justify-between">
+                        <div>
+                            <p class="text-base sm:text-lg font-semibold text-text-light">Cómo Integrar Neodata/Opus Data con Power BI</p>
+                            <p class="text-xs text-gray-500 mt-1">Mar 11, 2025</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-3 rounded-lg flex-shrink-0 ml-4">
+                             <!-- Placeholder de Icono -->
+                        </div>
+                    </a>
+
+                    <!-- Artículo 4: Dashboard de Control -->
+                    <a href="#" class="block p-4 sm:p-5 bg-content-dark rounded-xl hover:bg-gray-700/50 transition-colors duration-300 flex items-center justify-between">
+                        <div>
+                            <p class="text-base sm:text-lg font-semibold text-text-light">Creación de un Dashboard de Control de Gestión (Estructura PMO)</p>
+                            <p class="text-xs text-gray-500 mt-1">Jan 10, 2025</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-4 rounded-lg flex-shrink-0 ml-4">
+                             <!-- Placeholder de Icono -->
+                        </div>
+                    </a>
+
+                    <!-- Artículo 5: Habilidades Blandas -->
+                    <a href="#" class="block p-4 sm:p-5 bg-content-dark rounded-xl hover:bg-gray-700/50 transition-colors duration-300 flex items-center justify-between">
+                        <div>
+                            <p class="text-base sm:text-lg font-semibold text-text-light">Liderazgo de Equipos Híbridos (Sitio + Remoto)</p>
+                            <p class="text-xs text-gray-500 mt-1">Jan 12, 2025</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-5 rounded-lg flex-shrink-0 ml-4">
+                             <!-- Placeholder de Icono -->
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Más años y secciones -->
+            <div class="mt-12">
+                <h3 class="text-sm text-gray-500 mb-6 tracking-widest uppercase">2024</h3>
+                <p class="text-gray-500 text-sm">Contenido de años anteriores (Ej. Proyectos de la universidad, experiencia inicial en obra).</p>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Script para gestionar el modo oscuro (usando Alpine.js para la reactividad simple) -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('darkModeToggle', () => ({
+                darkMode: true,
+                init() {
+                    // Inicializar la clase dark en el body si darkMode es verdadero (por defecto)
+                    if (this.darkMode) {
+                        document.body.classList.add('dark-mode-active');
+                    }
+                },
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    if (this.darkMode) {
+                        document.body.classList.add('dark-mode-active');
+                        // Ajustar los colores del body y aside al modo oscuro
+                        document.body.classList.remove('bg-gray-100', 'text-gray-900');
+                        document.body.classList.add('bg-primary-dark', 'text-text-light');
+                    } else {
+                        document.body.classList.remove('dark-mode-active', 'bg-primary-dark', 'text-text-light');
+                        document.body.classList.add('bg-gray-100', 'text-gray-900');
+                    }
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
