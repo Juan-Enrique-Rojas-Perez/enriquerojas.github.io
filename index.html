@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Enrique Rojas | Data Analyst</title>
+    <meta name="description" content="Analista de datos con experiencia en analisis de presupuestos y construccion">
+    <style>
+        :root {
+            /* Enhanced Color Palette */
+            --primary-blue: #000000;
+            --secondary-blue: #adadad;
+            --accent-orange: #000000;
+            --dark-navy: #1e293b;
+            --light-gray: #646464;
+            --medium-gray: #414141;
+            --success-green: #000000;
+            --white: #7491a8;
+            --text-primary: #000000;
+            --text-secondary: #ffffff;
+
+            /* --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f59e0b;
+            --dark-navy: #1e293b;
+            --light-gray: #f8fafc;
+            --medium-gray: #64748b;
+            --success-green: #10b981;
+            --white: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;*/
+
+            /* Spacing System */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+
+            /* Typography */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--light-gray);
+            font-size: var(--font-size-base);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Enhanced Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+        }
+
+        .logo {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-xl);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-gray);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange-);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        /* Streamlined Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--light-gray);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: rgba(59, 130, 246, 0.03);
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: var(--font-size-5xl);
+            font-weight: 800;
+            color: var(--dark-navy);
+            line-height: 1.1;
+            margin-bottom: var(--space-md);
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--secondary-blue);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-description {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            line-height: 1.7;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--accent-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: 0;
+            margin-left: 75px;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--primary-blue);
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--primary-blue);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--primary-blue);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Hero Card */
+        .hero-card {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            border-top: 4px solid var(--accent-orange);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            margin: 0 auto var(--space-md);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--accent-orange);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-contact {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            justify-content: center;
+            padding: var(--space-xs);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item .icon-emoji {
+            font-size: var(--font-size-base);
+            color: var(--secondary-blue);
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            background: var(--light-gray);
+            transform: translateX(2px);
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /*.contact-link:hover {
+            color: var(--primary-blue);
+        }*/
+
+        /* Enhanced Sections */
+        .section {
+            padding: var(--space-2xl) 0;
+            margin: 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--dark-navy);
+            text-align: center;
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Enhanced Cards */
+        .expertise-grid,
+        .competencias-grid,
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .expertise-card,
+        .tech-category,
+        .competencia-card {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before,
+        .tech-category::before,
+        .competencia-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+        }
+
+        .expertise-card:hover,
+        .tech-category:hover,
+        .competencia-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-blue);
+        }
+
+        .expertise-title,
+        .competencia-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: var(--space-md);
+        }
+
+        .expertise-list,
+        .competencia-list {
+            list-style: none;
+        }
+
+        .expertise-list li,
+        .competencia-list li {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+            padding-left: var(--space-md);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .expertise-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-blue);
+            font-weight: bold;
+        }
+
+        .competencia-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+        }
+
+        /* Enhanced Tech Tags */
+        .tech-category h3 {
+            color: var(--dark-navy);
+            margin-bottom: var(--space-md);
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .tech-tag {
+            background: transparent;
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-xl);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px var(--secondary-blue) solid;
+        }
+
+        .tech-tag:hover {
+            background: var(--light-gray);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-problem {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .project-content {
+            padding: var(--space-xl);
+        }
+
+        .project-section h4 {
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .project-tech-tag {
+            background: var(--light-gray);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius-xl);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+
+        .project-results {
+            background: #f0fff4;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--success-green);
+            margin: var(--space-md) 0;
+        }
+
+        .project-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .project-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Enhanced Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-orange));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 50%;
+            padding-right: var(--space-xl);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            padding-left: var(--space-xl);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: var(--space-xl);
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            border: 4px solid white;
+            transform: translateX(-50%);
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+        }
+
+        .timeline-date {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xs);
+            background: rgba(30, 64, 175, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-xl);
+            display: inline-block;
+        }
+
+        .timeline-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: var(--space-xs);
+        }
+
+        .timeline-company {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+            font-style: italic;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+        }
+
+        .timeline-achievements li {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+            padding-left: var(--space-md);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .timeline-achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            padding: var(--space-2xl) 0;
+            background: var(--light-gray);
+        }
+
+        .experience-intro {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .experience-highlight {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .experience-advantages h4 {
+            color: var(--dark-navy);
+            margin-bottom: var(--space-md);
+            font-size: var(--font-size-lg);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        .advantage-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .advantage-item .icon {
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: var(--font-size-lg);
+        }
+
+        /* Enhanced Contact Section */
+        .contact {
+            padding: var(--space-2xl) 0;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            max-width: 800px;
+            margin: var(--space-xl) auto 0;
+        }
+
+        .contact-method {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-method .contact-icon {
+            font-size: var(--font-size-2xl);
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .contact-method h3 {
+            color: var(--dark-navy);
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+        }
+
+        .contact-method a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-lg);
+            }
+
+            .hero-text h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: var(--font-size-3xl);
+            }
+
+            .expertise-grid,
+            .tech-categories,
+            .competencias-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item .timeline-content {
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+                padding-left: var(--space-md) !important;
+                padding-right: var(--space-md) !important;
+                text-align: left !important;
+            }
+
+            .timeline-item::before {
+                left: 20px !important;
+                transform: translateX(0) !important;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+                background: var(--white);
+            }
+
+            .experience-highlight {
+                padding: var(--space-lg);
+            }
+        }
+
+        /* Simple animations only */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Juan Enrique Rojas</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#expertise">Competencias</a></li>
+                    <li><a href="#stack">Tecnologías</a></li>
+                    <li><a href="#competencias">Habilidades</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#experience">Experiencia</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+                <button class="mobile-menu">
+                    <span>☰</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Analista de Datos con Dominio en Proyectos de Capital e Infraestructura</h1>
+                    <div class="hero-subtitle"> Un modelo de datos sólido es la base de todo proyecto exitoso </div>
+                    <div class="hero-description">
+                        Los presupuestos y programas de obra no son solamente cifras y fechas compromiso, es
+                        optimización de recursos y tiempos para maximizar el beneficio del proyecto
+                        <br><br>
+                        He trabajado mas de 5 años gestionando proyectos de infraestructura y analizando presupuestos de
+                        obra, lo que me permite entender las necesidades reales del negocio y traducirlas en soluciones
+                        de análisis de
+                        datos efectivas que minimicen los sobrecostos y retrasos en la ejecución de los proyectos.
+                    </div>
+                    <div class="hero-highlight">
+                        <strong>¿Porque soy diferente a los demás?</strong> Mi experiencia en campo me permite
+                        identificar con precision las problemáticas y proponer soluciones
+                        practicas que realmente aporten valor al negocio.
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn-primary">
+                            Proyectos
+                        </a>
+                        <a href="https://drive.google.com/file/d/1fEJXxw2Cwgbb_HYU6mDKeJfdFhplYF6j/view?usp=drive_link"
+                            class="btn-secondary" download target="_blank">
+                            Descarga mi CV
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            Contáctame
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="profile-image">
+                        <img src="123434539.jpg" alt="Juan Enrique">
+                    </div>
+                    <h3>Analista de datos</h3>
+                    <div class="profile-contact">
+                        <div class="contact-item">
+                            <div class="icon-emoji">✉️</div>
+                            <a href="mailto:enriquerojas.ing@gmail.com"
+                                class="contact-link">enriquerojas.ing@gmail.com.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-emoji">📱</div>
+                            <a href="https://wa.me//+525587696852" target="_blank" class="contact-link">+52 55 8769
+                                6852</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-emoji">💼</div>
+                            <a href="https://www.linkedin.com/in/juan-enrique-rojas-perez/" target="_blank"
+                                class="contact-link">LinkedIn</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-emoji">💻</div>
+                            <a href="https://github.com/Juan-Enrique-Rojas-Perez" target="_blank"
+                                class="contact-link">GitHub</a>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-emoji">🌐</div>
+                            <span>Ingles C1 Avanzado</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon-emoji">📍</div>
+                            <span>Taxco, Guerrero, México</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="section">
+        <div class="container">
+            <h2 class="section-title">Mi punto fuerte?</h2>
+            <p class="section-subtitle">Mi experiencia trabajando tanto en desarrollo de proyectos como en la ejecución
+                de los mismos
+                me permite identificar problemáticas reales y proponer soluciones efectivas y oportunas minimizando
+                riesgos y maximizando beneficios.
+            </p>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-title">COMPETENCIAS TÉCNICAS Y DE ANÁLISIS</h3>
+                    <ul class="expertise-list">
+                        <li>MODELADO DE DATOS: Diseño de estructura de datos para toma de decisiones</li>
+                        <li>PENSAMIENTO ALGORÍTMICO: Capacidad para descomponer problemas complejos en pasos lógicos
+                            pequeños</li>
+                        <li>DATA STORYTELLING: Capacidad de convertir datos complejos en narrativas claras y concisas
+                        </li>
+                        <li>INTEGRACIÓN DE SISTEMAS: Habilidad para transformar datos de una plataforma a otra</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">GESTIÓN DE NEGOCIO</h3>
+                    <ul class="expertise-list">
+                        <li>VISION DE NEGOCIO: Entendimiento del impacto de la eficiencia operativa en la rentabilidad
+                            de la empresa</li>
+                        <li>GESTIÓN DE STAKEHOLDERS: Habilidad de negociación, interacción y presentación de información
+                            entre las diferentes partes interesadas</li>
+                        <li>ANÁLISIS DE RIESGO CUANTITATIVO: Capacidad de identificación, medición y predicción de
+                            riesgos mediante modelos estadísticos</li>
+                        <li>LIDERAZGO DE PROYECTOS: Liderazgo en la implementación de las nuevas metodologías de control
+                            y operación</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">INGENIERÍA Y ANÁLISIS DE DATOS</h3>
+                    <ul class="expertise-list">
+                        <li>LENGUAJES: Dominio avanzado de Python y SQL </li>
+                        <li>LIBRERÍAS: Manejo de librerías de trabajo como Pandas, NumPy, Sickit-learn</li>
+                        <li>HERRAMIENTAS DE VISUALIZACIÓN: Librerías como Matplotlib y/o Seaborn, y programas como
+                            Tableau y PowerBi </li>
+                        <li>Estadística: Pruebas de hipótesis y pruebas A/B</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3 class="expertise-title">INTEGRACIÓN DE NEGOCIOS</h3>
+                    <ul class="expertise-list">
+                        <li>EXPERIENCIA MIXTA: Experiencia en ejecución de proyectos y desarrollo de proyectos</li>
+                        <li>COMPRENSIÓN DE PROBLEMÁTICAS: Capacidad de identificación de problemáticas y propuestas de
+                            solución enfocadas en resultados</li>
+                        <li>COMUNICACIÓN EFECTIVA: Conocimiento de lenguaje técnico y capacidad de comunicación
+                            simplificada a clientes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="section">
+        <div class="container">
+            <h2 class="section-title">Tecnologías</h2>
+            <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3>MACHINE LEARNING & AI</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Tableau/Power BI</span>
+                        <span class="tech-tag">Opus</span>
+                        <span class="tech-tag">Neodata</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>ANÁLISIS DE DATOS Y VISUALIZACIÓN</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>BUSINESS INTELLIGENCE</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Análisis estadístico</span>
+                        <span class="tech-tag">Test A/B</span>
+                        <span class="tech-tag">Pruebas de hipótesis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competencias" class="section">
+        <div class="container">
+            <h2 class="section-title">Principales competencias</h2>
+            <p class="section-subtitle">Experiencia técnica y practica en el análisis y ejecución de proyectos</p>
+
+            <div class="competencias-grid">
+                <div class="competencia-card">
+                    <h3 class="competencia-title">HABILIDADES TÉCNICAS</h3>
+                    <ul class="competencia-list">
+                        <li>Proyectos de inicio a fin: Definición de problemas y entrega de resultados</li>
+                        <li>Selección de algoritmos: Conocimiento de cuando y como usar los distintos modelos de
+                            análisis</li>
+                        <li>Optimización: Velocidad, certeza y fácil interpretación de resultados</li>
+                        <li>Dominio: Entendimiento del procedimiento y capacidad de automatización</li>
+                        <li>Calidad de código: limpieza, comprensibilidad y replicabilidad en mis proyectos</li>
+                    </ul>
+                </div>
+
+                <div class="competencia-card">
+                    <h3 class="competencia-title">ANÁLISIS DE NEGOCIOS</h3>
+                    <ul class="competencia-list">
+                        <li>Traducción de problemas: Convierto requerimientos de negocios en soluciones técnicas</li>
+                        <li>Enfoque en retorno de inversion: Soluciones con resultados medibles para el negocio</li>
+                        <li>Comunicación efectiva: Convierto el lenguaje técnico en lenguaje amigable para los clientes
+                        </li>
+                        <li>Administración de proyectos: Entrega de resultados en tiempo y forma</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">MIS PROYECTOS</h2>
+            <p class="section-subtitle">Que soy capaz de hacer?</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Encriptador de Texto</div>
+                        <div class="project-problem">Creación de un software para encriptar y desencriptar mensajes de
+                            texto, centrado en el desarrollo y aplicación de algoritmos de cifrado</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>Elementos técnicos</h4>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">JAVA</span>
+                                <span class="project-tech-tag">HTML</span>
+                                <span class="project-tech-tag">CSS</span>
+                            </div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li>Desarrollo de algoritmos de cifrado en Java. Procesamiento de texto de entrada.
+                                    Validación funcional de los procesos de encriptación y desencriptación.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-results">
+                            <strong>RESULTADOS:</strong> Recibe, procesa y transforma texto, demostrando competencia en
+                            lógica de programación front-end y back-end.
+
+                        </div>
+                        <a href="https://github.com/77EArthQUake77/Challenge-01-Encriptador-de-texto"
+                            class="project-link" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Conversor de Unidades</div>
+                        <div class="project-problem">Desarrollo de una aplicación funcional para la conversión de
+                            divisas, enfocada en la interacción de la interfaz de usuario con la lógica de programación.
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>ELEMENTOS TÉCNICOS</h4>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">JAVA</span>
+                                <span class="project-tech-tag">HTML</span>
+                                <span class="project-tech-tag">CSS</span>
+                            </div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li>Diseño de la interfaz de usuario. Implementación de la lógica de conversión en Java.
+                                    Manejo de excepciones para garantizar la estabilidad.</li>
+                            </ul>
+                        </div>
+                        <div class="project-results">
+                            <strong>RESULTADOS:</strong> conversión bidireccional de divisas, con interfaz usable y
+                            validación de inputs.
+                        </div>
+                        <a href="https://github.com/77EArthQUake77/Alura-Challenge-02" class="project-link"
+                            target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Análisis Predictivo de Precios de Autos Usados</div>
+                        <div class="project-problem">Identificación de factores clave que determinan el precio de
+                            mercado final de autos usados.
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>ELEMENTOS TÉCNICOS</h4>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">Python</span>
+                                <span class="project-tech-tag">Pandas</span>
+                                <span class="project-tech-tag">Online Deploy</span>
+                            </div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li>Limpieza y Preprocesamiento de datos (manejo de nulos/atípicos)</li>
+                                <li>Análisis Exploratorio de Datos (EDA) para cuantificar la correlación entre
+                                    variables.</li>
+                                <li>Visualización de la distribución de precios.</li>
+                                <li>Despliegue online del programa.</li>
+                            </ul>
+                        </div>
+                        <div class="project-results">
+                            <strong>RESULTADO:</strong> Identifiqué qué variables clave explican el 75% de la varianza
+                            del precio de venta, permitiendo establecer precios de mercado un 15% más precisos que la
+                            estimación inicial.
+
+                        </div>
+                        <a href="https://github.com/Juan-Enrique-Rojas-Perez/Tripleten_Sprint_7_Project"
+                            class="project-link" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Modelo Predictivo de Ventas de Videojuegos </div>
+                        <div class="project-problem">Identificación de patrones de éxito (ventas, reseñas,
+                            clasificaciones)
+                            para la planificación estratégica de campañas de marketing.
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>ELEMENTOS TÉCNICOS</h4>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">Python</span>
+                                <span class="project-tech-tag">SciPy</span>
+                                <span class="project-tech-tag">Pandas</span>
+                                <span class="project-tech-tag">Matplotlib</span>
+                            </div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li>Preprocesamiento ETL y limpieza de datos históricos.</li>
+                                <li>Análisis de Correlación (reseñas vs. ventas)</li>
+                                <li>Pruebas de Hipótesis (T-Test) para validar diferencias estadísticas entre
+                                    plataformas y géneros.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-results">
+                            <strong>RESULTADO:</strong>Creación de modelo que identifica plataformas potencialmente
+                            rentables, reduciendo el riesgo en la inversión publicitaria
+                        </div>
+                        <a href="https://github.com/Juan-Enrique-Rojas-Perez/Modelo-Predictivo-de-Ventas-de-Videojuegos"
+                            class="project-link" target="_blank">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-prop">
+        <div class="container">
+            <h2 class="section-title">Mi propuesta de valor</h2>
+            <p class="section-subtitle">Porque elegir un analista de datos con experiencia en construccion y
+                administracion?</p>
+
+            <div class="experience-intro">
+                <div class="experience-highlight">
+                    <strong>EXPERIENCIA PROFESIONAL</strong>
+                    <div style="font-size: var(--font-size-lg); margin-top: var(--space-xs); opacity: 0.95;">
+                        Mas de 5 años de experiencia en construcción con grandes empresas y 3 años administrando
+                        negocios
+                    </div>
+                </div>
+
+                <div class="experience-advantages">
+                    <h4>Conocer de primera mano los procesos ejecutivos es mi principal fortaleza frente a otros
+                        analistas de datos</h4>
+                    <div class="advantages-grid">
+                        <div class="advantage-item">
+                            <div class="icon">✓</div>
+                            <span>Entiendo el contexto y las areas donde mis análisis serán utilizados</span>
+                        </div>
+                        <div class="advantage-item">
+                            <div class="icon">✓</div>
+                            <span>Se cuales son los principales puntos que deben ser analizados y optimizados</span>
+                        </div>
+                        <div class="advantage-item">
+                            <div class="icon">✓</div>
+                            <span>Entiendo el lenguaje técnico para hablar con los expertos del tema, y puedo traducirlo
+                                a un lenguaje amigable con el cliente</span>
+                        </div>
+                        <div class="advantage-item">
+                            <div class="icon">✓</div>
+                            <span>Puedo identificar las métricas que realmente interesan en cada proyecto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experiencia Profesional</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 - 2025</div>
+                        <div class="timeline-title">Certificación de analista de datos</div>
+                        <div class="timeline-company">Tripleten Bootcamp</div>
+                        <p class="timeline-description">Curso intensivo de 10 meses que abarca desde aprendizaje básico
+                            de lenguaje hasta automatización de procesos y aplicaciones empresariales</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Marzo 2022 - Presente</div>
+                        <div class="timeline-title">Gerente General y estratégico</div>
+                        <div class="timeline-company">FacialDentTaxco</div>
+                        <ul class="timeline-achievements">
+                            <li>Establecí y dirigí el negocio desde sus inicios, logrando una tasa de crecimiento del
+                                15% </li>
+                            <li>Implemente un sistema de suministro y envío de productos </li>
+                            <li>Establecí estrategias que han permitido un 80% de retención de clientes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"> 2020 - 2022</div>
+                        <div class="timeline-title">Negociación técnica y consolidación de contratos</div>
+                        <div class="timeline-company">Secretaria de la Defensa Nacional (SEDENA)</div>
+                        <p class="timeline-description">Enlace técnico entre area de proyectos y area de adquisiciones
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Minimice considerablemente los errores en la compra de materiales y los gastos
+                                innecesarios.</li>
+                            <li>Analicé y comparé propuestas económicas de proveedores, determinando la opción más
+                                eficiente en calidad, tiempo y costo para múltiples requerimientos.</li>
+                            <li>Centralice los requerimientos de materiales de todos los frentes del aeropuerto para
+                                concursos, reduciendo el número de contratos por insumo y optimizando el proceso de
+                                adquisición.</li>
+                            <li>Coordiné la compra técnica de materiales y servicios, garantizando el apego a la
+                                normativa presupuestal y la Ley Federal de Adquisiciones.</li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"> 2019 - 2020</div>
+                        <div class="timeline-title">Supervisor de obra en campo y taller de fabricación</div>
+                        <div class="timeline-company"> SIULKA S.A de C.V. </div>
+                        <p class="timeline-description">Responsable de obras de montaje y mantenimiento de estructuras
+                            dentro de plantas de producción de Bayer y Cervecería Cuauhtemoc
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Gestioné la documentación de más de 20 empleados (permisos, reportes, seguro social),
+                                manteniendo el control administrativo y normativo del personal en sitio.</li>
+                            <li>Supervisé la fabricación en taller y el montaje en sitio de estructura metálica para
+                                soporte de tanques, finalizando con éxito la ampliación en planta Bayer.</li>
+                            <li>Coordiné cuadrillas para el montaje de estructuras metálicas y cubiertas industriales,
+                                asegurando el cumplimiento del programa de obra en tiempo y calidad.</li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"> 2017 - 2019</div>
+                        <div class="timeline-title">Supervisor de obra en campo y analista de presupuestos</div>
+                        <div class="timeline-company">Grupo Rio Balsas S.A. de C.V.</div>
+                        <p class="timeline-description">Responsable de gestión de proyecto y supervision de ejecución
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Administré la obra civil, realizando estimaciones de avance y cuantificación de
+                                volúmenes de materiales, asegurando el control financiero y logístico del proyecto.</li>
+                            <li>Supervisé la construcción de la cimentación para la planta de concreto HOLCIM en el AICM
+                                de Texcoco y Naucalpan, cumpliendo con los requerimientos técnicos y de seguridad.</li>
+                            <li>Actué como enlace administrativo y segurista, gestionando permisos de acceso/salida de
+                                personal y maquinaria, y brindando EPP a todo el equipo, minimizando riesgos operativos.
+                            </li>
+                        </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Construye un mejor futuro para tu negocio</h2>
+            <p class="section-subtitle">Conectemos, vamos a construir resultados usando datos como materia prima</p>
+
+            <div class="contact-grid">
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:enriquerojas.ing@gmail.com" target="_blank">enriquerojas.ing@gmail.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">📱</div>
+                    <h3>Telefono</h3>
+                    <a href="https://wa.me//+525587696852" target="_blank">+52 55 8769 6852</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">💻</div>
+                    <h3>Portafolio completo</h3>
+                    <a href="https://github.com/Juan-Enrique-Rojas-Perez"
+                        target="_blank">github.com/Juan-Enrique-Rojas-Perez</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">📄</div>
+                    <h3>CV</h3>
+                    <a href="https://drive.google.com/file/d/1fEJXxw2Cwgbb_HYU6mDKeJfdFhplYF6j/view?usp=drive_link"
+                        download target="_blank">Descarga mi CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (header) {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            }
+        });
+
+        // Simple Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.expertise-card, .tech-category, .competencia-card, .project-card, .timeline-item, .contact-method, .advantage-item').forEach(el => {
+            el.classList.add('animate-on-scroll');
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        let menuOpen = false;
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+
+                if (menuOpen) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.background = 'white';
+                    navLinks.style.padding = '1rem';
+                    navLinks.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                    navLinks.style.borderRadius = '0 0 12px 12px';
+                    navLinks.style.zIndex = '999';
+                    mobileMenu.innerHTML = '<span>✕</span>';
+                } else {
+                    navLinks.style.display = 'none';
+                    mobileMenu.innerHTML = '<span>☰</span>';
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                        mobileMenu.innerHTML = '<span>☰</span>';
+                        menuOpen = false;
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.position = 'static';
+                    navLinks.style.width = 'auto';
+                    navLinks.style.background = 'none';
+                    navLinks.style.padding = '0';
+                    navLinks.style.boxShadow = 'none';
+                    navLinks.style.borderRadius = '0';
+                    mobileMenu.innerHTML = '<span>☰</span>';
+                    menuOpen = false;
+                } else if (!menuOpen) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        }
+
+        // Error handling for any missing elements
+        window.addEventListener('error', (e) => {
+            console.warn('Non-critical error handled:', e.message);
+        });
+    </script>
+</body>
+
+</html>
